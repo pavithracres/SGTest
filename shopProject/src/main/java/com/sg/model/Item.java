@@ -1,5 +1,9 @@
 package com.sg.model;
 
+/*
+ * Represents items in the shopping cart.
+ * Assumption - there wont be 2 objects for the same item, only count will increase
+ */
 public class Item implements Cloneable {
 
   public Long itemId = (long) 0;

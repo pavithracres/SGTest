@@ -10,8 +10,8 @@ package com.sg.model;
 public class Bundle {
   
   private int bundleCount = 0;
-  private double bundlePrice = 0.0;
-  private double bundleDiscountedPrice = 0.0;
+  private double bundlePrice = 0.0; // cost per bundle
+  private double bundleDiscountedPrice = 0.0; // Discounted cost per bundle
   
   public int getBundleCount() {
     return bundleCount;

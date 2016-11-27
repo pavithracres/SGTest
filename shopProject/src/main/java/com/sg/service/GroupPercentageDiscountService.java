@@ -18,6 +18,11 @@ public class GroupPercentageDiscountService {
     this.discountPercentage = rule.getDiscountValue();
   }
 
+  /*
+   * This method generate Bundles  
+   * - Bundle Count - Maximum bundles possible (Unique items) for the list of items in the shopping cart 
+   * - Sets discounted price based on percentage
+   */
   public Bundle generateBundles(List<Item> listOfItems) {
     Bundle bundle = new Bundle();
     int uniqueItems = 0;
@@ -33,17 +38,17 @@ public class GroupPercentageDiscountService {
         listIteratorToRemove.remove();
       }
     }
-    
+
     /* Set price if at least one bundle is present */
     if (numberOfItems == uniqueItems) {
       this.setBundlePrice(bundle, listOfItems);
     }
-    
+
     while (numberOfItems == uniqueItems) {
-      
+
       ListIterator<Item> listIterator = listOfItems.listIterator();
       bundle.setBundleCount(bundle.getBundleCount() + 1);
-      
+
       while (listIterator.hasNext()) {
         Item tempItem = listIterator.next();
         tempItem.count = tempItem.count - 1;
@@ -53,12 +58,13 @@ public class GroupPercentageDiscountService {
           numberOfItems--;
         }
       }
-      
+
     }
 
     return bundle;
   }
 
+  /* Generate cost per item for the bundle & set it on the same */
   public void setBundlePrice(Bundle bundle, List<Item> listOfItems) {
     double itemCostAfterApplicableDiscount = 0.0;
     for (Item item : listOfItems) {
@@ -67,6 +73,5 @@ public class GroupPercentageDiscountService {
       bundle.setBundleDiscountedPrice(bundle.getBundleDiscountedPrice() + itemCostAfterApplicableDiscount);
     }
   }
-  
-  
+
 }

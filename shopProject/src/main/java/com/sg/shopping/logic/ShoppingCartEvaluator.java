@@ -16,6 +16,7 @@ public class ShoppingCartEvaluator {
 
   public Bill evaluate(ShoppingCart cart, List<DiscountRule> activeDiscounts) {
     Bill bill = new Bill();
+    bill.setCart(cart);
     Collections.sort(activeDiscounts);
     List<Item> listOfItems = cart.getItems();
     List<Item> listOfItemsCopy = new ArrayList<Item>();
